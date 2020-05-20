@@ -17,15 +17,15 @@ html(lang="en")
                 a(href="index.html").logo BA
               .hero__menu
                 nav.nav
-                - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
+                - var mainMenu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
                 ul.nav__list
-                  each item in menu
+                  each item in mainMenu
                     li.nav__item
                       a(href="").nav__link #{item}
               .hero__links
-                - var icons = ['insta', 'vk', 'github']
+                - var socialsIcons = ['insta', 'vk', 'github']
                 ul.socials
-                  each item, index in icons
+                  each item, index in socialsIcons
                     li.socials__item
                       +icon(`${item}`, 'socials__icon')
             .hero__content
@@ -149,16 +149,68 @@ html(lang="en")
                     button.slider-button__item.slider-button__item--slide--next
                       +icon('arrow-down', 'slider-button__icon slider-button__icon--next')
               ul.review-slider__list
-                li.review-slider__item.review-item
-                  .review-item__image
-                    +icon('quote', 'review-item__icon')
-                  .review-item__content
-                    .review-item__text
-                      p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                    .review-item__person
-                      .person__avatar
-                        .avatar.person__avatar
-                          +image("content/user.jpg", "avatar__pic")
-                        .person__text
-                          .person__username Ковальчук Дмитрий
-                          .person__desc Основатель Loftschool
+                - for (var i = 1; i < 3; i++)
+                    li.review-slider__item.review-item
+                      .review-item__image
+                        +icon('quote', 'review-item__icon')
+                      .review-item__content
+                        .review-item__text
+                          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                        .review-item__person
+                          .person
+                            .avatar.person__avatar
+                              +image("content/user.jpg", "avatar__pic")
+                            .person__text
+                              .person__username Ковальчук Дмитрий
+                              .person__desc Основатель Loftschool
+        
+        section.form-section
+          .container
+            h2.section__title.form-section__title Связаться со мной
+            .form
+              form.form__elem
+                .form__row
+                  label.form__col
+                    .form__col-title Введите ваше имя
+                    .form__input-wrap
+                      +icon('user', 'form__icon')
+                      input(type="text" placeholder="Ковальчук Дмитрий").form__input
+                  label.form__col
+                    .form__col-title Введите ваш email
+                    .form__input-wrap
+                      +icon('envelope', 'form__icon')
+                      input(type="text" placeholder="Ковальчук Дмитрий").form__input
+                .form__row
+                  label.form__col
+                    .form__col-title Сообщение к письму
+                    .form__input-wrap
+                      +icon('envelope', 'form__icon')
+                      textarea(type="text" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса").form__input.form__input--textarea
+                .form__row.form__row--buttons
+                  button(type="submit").form-button Отправить
+
+      footer.footer
+        .container.footer__container
+          .footer__inc © 2019
+          .footer__user
+            .user-info.user-info--footer
+              .user-info__username Владимир Астаханов
+              h1.user-info__desc Личный сайт веб разработчика
+          .footer__content
+            .footer__menu
+              nav.nav.nav--footer
+                ul.nav__list
+                  each item in mainMenu
+                    li.nav__item
+                      a(href="").nav__link #{item}
+            .footer__bottom
+              .footer__bottom-block
+                .footer__bottom-text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                .footer__bottom-socials
+                  ul.socials.socials--footer
+                    each item, index in socialsIcons
+                      li.socials__item
+                        +icon(`${item}`, 'socials__icon')
+              .footer__bottom-block
+                .footer__bottom-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                .footer__bottom-autor Martin Golding

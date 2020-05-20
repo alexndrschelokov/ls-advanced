@@ -1,5 +1,28 @@
 .slider-button {
   display: flex;
+
+  &--review {
+
+    .slider-button__item {
+      border-radius: 50%;
+      width: 47px;
+      height: 47px;
+      border: 1px solid #455067;
+
+      background: transparent;
+    }
+
+    .slider-button__icon--prev {
+      transform: rotate(-180deg);
+      transform-origin: 2px 3px;
+    }
+    
+    .slider-button__icon--next {
+      transform: rotate(0deg);
+      transform-origin: initial;
+    }
+
+  }
 }
 
 .slider-button__item {
@@ -40,4 +63,29 @@
 .slider-button__icon--next {
   transform: rotate(90deg);
   transform-origin: 5px 0;
+}
+
+.slider-button {
+  &--review {
+
+    .slider-button__item {
+      border-radius: 50%;
+      width: 47px;
+      height: 47px;
+      border: 1px solid #455067;
+
+      background: transparent;
+    }
+
+    .slider-button__icon--prev {
+      transform: rotate(-180deg);
+      transform-origin: 2px 3px;
+    }
+    
+    .slider-button__icon--next {
+      transform: rotate(0deg);
+      /* transform-origin: 0 5 */
+    }
+
+  }
 }
