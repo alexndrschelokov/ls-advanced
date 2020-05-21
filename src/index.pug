@@ -38,31 +38,32 @@ html(lang="en")
                 +icon('scroll', 'scroll-down-btn__icon')
 
         section.about
-          .container.about__container
-            .about__left
-              .user
-                .avatar.user__avatar
-                  +image("content/user.jpg", "avatar__pic")
-                ul.user__desc
-                  -
-                    var items = [
-                      ['Проживаю', 'Новосибирск'],
-                      ['Возвраст', '27 лет'],
-                      ['Родился', '7 августа 1999']
-                    ]
-                  each item in items
-                    li.user__desc-item
-                      .user__key #{item[0]}
-                      .user__value #{item[1]}
-            .about__right
-              .about__prolog
-                p Привет, меня зовут
-              .about__user-name
-                p Владимир Астаханов
-              .about__text
-                p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-              .about__ps
-                p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+          .container
+            .about__columns
+              .about__left
+                .user
+                  .avatar.user__avatar
+                    +image("content/user.jpg", "avatar__pic")
+                  ul.user__desc
+                    -
+                      var items = [
+                        ['Проживаю', 'Новосибирск'],
+                        ['Возвраст', '27 лет'],
+                        ['Родился', '7 августа 1999']
+                      ]
+                    each item in items
+                      li.user__desc-item
+                        .user__key #{item[0]}
+                        .user__value #{item[1]}
+              .about__right
+                .about__prolog
+                  p Привет, меня зовут
+                .about__user-name
+                  p Владимир Астаханов
+                .about__text
+                  p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                .about__ps
+                  p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
         
       .triangles
         svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
@@ -71,30 +72,34 @@ html(lang="en")
           polygon(points="0 100, 1000 100, 1000 0")
 
       section.values
-        .container
-          .values__title
-            h2.section__title.values__title-text Чем я могу быть вам полезен?
-            .values__title-desc
-              p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .container.values__container
+          .values__wrapper
+            .values__title
+              .values__title-container
+                h2.section__title.values__title-text Чем я могу быть вам полезен?
+                .values__title-desc
+                  p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
-          ul.user-skills
-            -
-              var skills = [
-                ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'JQuery и Vue.js']],
-                ['Workflow', ['Git', 'Terminal', 'Gulp', 'Webpack']]
-              ]
-            each item in skills
-              li.user-skills__item.skills-row
-                h3.skills-row__title #{item[0]}
-                ul.skills-row__list
-                  each skill, index in item[1]
-                    li.skills-row__item
-                      .skill
-                        svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
-                          circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--under
-                          circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--above
-                          linear-gradient()
-                        .skill__title #{skill}
+            .values__widget
+              .values__widget-container
+                ul.user-skills
+                  -
+                    var skills = [
+                      ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'JQuery и Vue.js']],
+                      ['Workflow', ['Git', 'Terminal', 'Gulp', 'Webpack']]
+                    ]
+                  each item in skills
+                    li.user-skills__item.skills-row
+                      h3.skills-row__title #{item[0]}
+                      ul.skills-row__list
+                        each skill, index in item[1]
+                          li.skills-row__item
+                            .skill
+                              svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
+                                circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--under
+                                circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--above
+                                linear-gradient()
+                              .skill__title #{skill}
 
       section.works
         .container
@@ -143,11 +148,9 @@ html(lang="en")
               .review-slider__header
                 .review-slider__title Что обо мне говорят
                 .review-slider__controls
-                  .slider-button.slider-button--review
-                    button.slider-button__item.slider-button__item--slide--prev
-                      +icon('arrow-down', 'slider-button__icon slider-button__icon--prev')
-                    button.slider-button__item.slider-button__item--slide--next
-                      +icon('arrow-down', 'slider-button__icon slider-button__icon--next')
+                  .review-button
+                    button.review-button__item.review-button__item-prev
+                    button.review-button__item.review-button__item-next
               ul.review-slider__list
                 - for (var i = 1; i < 3; i++)
                     li.review-slider__item.review-item
@@ -191,14 +194,15 @@ html(lang="en")
 
       footer.footer
         .container.footer__container
-          .footer__inc © 2019
-          .footer__user
-            .user-info.user-info--footer
-              .user-info__username Владимир Астаханов
-              h1.user-info__desc Личный сайт веб разработчика
+          .footer__copy
+            .footer__inc © 2019
+            .footer__user
+              .user-info.user-info--footer
+                .user-info__username Владимир Астаханов
+                h1.user-info__desc Личный сайт веб разработчика
           .footer__content
             .footer__menu
-              nav.nav.nav--footer
+              .nav.nav--footer
                 ul.nav__list
                   each item in mainMenu
                     li.nav__item

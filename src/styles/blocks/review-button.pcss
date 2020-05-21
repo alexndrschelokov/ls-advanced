@@ -1,0 +1,45 @@
+.review-button {
+  display: flex;
+  align-items: center;
+}
+
+.review-button__item {
+  position: relative;
+  display: block;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  border: 1px solid #414c63;
+  background: transparent;
+
+
+  margin-right: 20px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+.review-button__item-next,
+.review-button__item-prev {
+  &:before {
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='306' height='306' fill='%23414c63'%3E%3Cpath d='M94.35 0l-35.7 35.7L175.95 153 58.65 270.3l35.7 35.7 153-153z'/%3E%3C/svg%3E") 50%/contain no-repeat;
+  }
+}
+
+.review-button__item-prev {
+  &:before {
+    transform: translate(-50%,-50%) rotate(-180deg);
+  }
+}
